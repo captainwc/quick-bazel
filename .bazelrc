@@ -1,0 +1,3 @@
+build --cxxopt=-std=c++23
+build --linkopt=-lssp
+build --linkopt=-lstdc++exp
