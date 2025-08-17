@@ -1,0 +1,33 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "BuildApp-DEBUG",
+            "type": "shell",
+            "command": "bazel build --config=dbg //example/libdemo:spdlog_demo",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": [
+                "$msCompile"
+            ]
+        },
+        {
+            "label": "BuildApp-RELEASE",
+            "type": "shell",
+            "command": "bazel build --config=rel //app:app",
+            "group": "build",
+            "problemMatcher": [
+                "$msCompile"
+            ]
+        },
+        {
+            "label": "Bazel Clean",
+            "type": "shell",
+            "command": "bazel clean --expunge",
+            "group": "build",
+            "problemMatcher": []
+        }
+    ]
+}

@@ -1,0 +1,16 @@
+{
+    "configurations": [
+        {
+            "name": "DebugWithMSVC",
+            "type": "cppvsdbg",
+            "request": "launch",
+            "preLaunchTask": "BuildApp-DEBUG",
+            "program": "${workspaceFolder}/bazel-bin/example/libdemo/spdlog_demo.exe",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${fileDirname}",
+            "environment": [],
+            "console": "integratedTerminal"
+        }
+    ]
+}

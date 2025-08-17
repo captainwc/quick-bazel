@@ -1,6 +1,9 @@
 .cache/
-.vscode/
+.vscode/*
 .idea/
+
+!.vscode/launch.json
+!.vscode/tasks.json
 
 bazel-*
 external
