@@ -3,11 +3,10 @@
 
 #include "absl/strings/str_split.h"
 #include "benchmark/benchmark.h"
-#include "downloader.h"
 #include "re2/re2.h"
 
 const char* PATTERN = R"(\s*(?:const|var)\s+\w+\s*=\s+\w+\.(\w+)\(.*?\);?)";
-auto        data    = FetchUrl("https://kaikaixixi.xyz").value_or("");
+std::string data    = "   const var = obj.FindAll('vars');";
 
 static void BM_RE2(benchmark::State& state) {
     for (auto _ : state) {

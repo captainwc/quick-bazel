@@ -1,13 +1,13 @@
-build --cxxopt=-std=c++23
-build --linkopt=-lssp
-build --linkopt=-lstdc++exp
+build --copt="/utf-8"
+build --cxxopt="/std:c++20"
 
 build:dbg --compilation_mode=dbg
 build:dbg --strip=never
-build:dbg --copt="-g"
-build:dbg --define=ENABLE_ASSERTS=true
+build:dbg --copt="/Zi"
+build:dbg --copt="/Od"
+build:dbg --copt="/DENABLE_ASSERTS=true"
 
 build:rel --compilation_mode=opt
-build:rel --copt="-O3"
-build:rel --copt="-DNDEBUG"
+build:rel --copt="/O2"
+build:rel --copt="/DNDEBUG"
 build:rel --strip=always

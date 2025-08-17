@@ -14,7 +14,6 @@ cc_binary(
         "regex_bench.cpp",
     ],
     deps = [
-        "//include:downloader",
         "@abseil-cpp//absl/strings",
         "@google_benchmark//:benchmark",
         "@re2",

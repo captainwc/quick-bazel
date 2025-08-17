@@ -1,3 +1,3 @@
-#include <print>
-
-int main() { std::println("Welcome to Modern CPP!"); }
+int main() {
+    return 0;
+}
