@@ -18,3 +18,5 @@ bazel_dep(name = "curl", version = "8.8.0.bcr.3")
 bazel_dep(name = "abseil-cpp", version = "20250512.1")
 bazel_dep(name = "re2", version = "2025-08-12")
 bazel_dep(name = "protobuf", version = "32.1")
+
+bazel_dep(name = "boost.geometry", version = "1.87.0")
