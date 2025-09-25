@@ -7,7 +7,9 @@ git_override(
     commit = "abb61a688167623088f8768cc9264798df6a9d10",
 )
 
-bazel_dep(name = "rules_cc", version = "0.0.17")
+bazel_dep(name = "rules_cc", version = "0.1.4")
+bazel_dep(name = "rules_proto", version = "7.1.0")
+bazel_dep(name = "rules_python", version = "1.6.1")
 
 bazel_dep(name = "spdlog", version = "1.15.3")
 bazel_dep(name = "googletest", version = "1.17.0")
@@ -15,3 +17,4 @@ bazel_dep(name = "google_benchmark", version = "1.9.4")
 bazel_dep(name = "curl", version = "8.8.0.bcr.3")
 bazel_dep(name = "abseil-cpp", version = "20250512.1")
 bazel_dep(name = "re2", version = "2025-08-12")
+bazel_dep(name = "protobuf", version = "32.1")

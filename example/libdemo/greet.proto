@@ -1,0 +1,9 @@
+syntax 3
+
+package demo;
+
+message Greet {
+    string name = 0;
+    int32 age = 1;
+    repeat string tel = 2;
+}
