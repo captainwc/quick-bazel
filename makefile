@@ -1,5 +1,7 @@
+#	bazel run @hedron_compile_commands//:refresh_all
+
 refresh:
-	bazel run @hedron_compile_commands//:refresh_all
+	bazel-compile-commands //...
 
 clean:
 	bazel clean --expunge
