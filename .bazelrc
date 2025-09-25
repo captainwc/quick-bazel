@@ -1,3 +1,5 @@
+build --downloader_config=bazel_downloader.cfg --remote_timeout=30m
+
 build --cxxopt=-std=c++23
 build --linkopt=-lssp
 build --linkopt=-lstdc++exp
