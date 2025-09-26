@@ -4,19 +4,19 @@
 #pragma once
 
 #include <cstddef>
-#include <expected>
 #include <memory>
 #include <string>
 
 #include "curl/curl.h"
+#include "tl/expected.hpp"
 
 using CurlHandle = std::unique_ptr<CURL, decltype(&curl_easy_cleanup)>;
 using FileHandle = std::unique_ptr<FILE, decltype(&fclose)>;
 
-std::expected<std::string, std::string> FetchUrl(std::string url) {
+tl::expected<std::string, std::string> FetchUrl(std::string url) {
     CurlHandle curl(curl_easy_init(), &curl_easy_cleanup);
     if (!curl) {
-        return std::unexpected<std::string>("Init curl failed");
+        return tl::unexpected<std::string>("Init curl failed");
     }
     std::string page;
     curl_easy_setopt(curl.get(), CURLOPT_URL, url.c_str());
@@ -30,19 +30,19 @@ std::expected<std::string, std::string> FetchUrl(std::string url) {
     CURLcode response = curl_easy_perform(curl.get());
     if (response != CURLE_OK) {
         auto err = curl_easy_strerror(response);
-        return std::unexpected<std::string>(err);
+        return tl::unexpected<std::string>(err);
     }
     return page;
 }
 
-std::expected<size_t, std::string> FetchToFile(const std::string &url, const std::string &output_path) {
+tl::expected<size_t, std::string> FetchToFile(const std::string &url, const std::string &output_path) {
     FileHandle file(fopen(output_path.c_str(), "wb"), &fclose);
     if (!file) {
-        return std::unexpected("Failed to open output file: " + output_path);
+        return tl::unexpected("Failed to open output file: " + output_path);
     }
     CurlHandle curl(curl_easy_init(), &curl_easy_cleanup);
     if (!curl) {
-        return std::unexpected("Init curl failed");
+        return tl::unexpected("Init curl failed");
     }
     curl_easy_setopt(curl.get(), CURLOPT_URL, url.c_str());
     //    - CURLOPT_WRITEFUNCTION: 不设置，使用 libcurl 默认的 fwrite 实现
@@ -51,7 +51,7 @@ std::expected<size_t, std::string> FetchToFile(const std::string &url, const std
 
     CURLcode response = curl_easy_perform(curl.get());
     if (response != CURLE_OK) {
-        return std::unexpected(curl_easy_strerror(response));
+        return tl::unexpected(curl_easy_strerror(response));
     }
     curl_off_t bytes_downloaded = 0;
     curl_easy_getinfo(curl.get(), CURLINFO_SIZE_DOWNLOAD_T, &bytes_downloaded);

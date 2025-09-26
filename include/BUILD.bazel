@@ -8,5 +8,6 @@ cc_library(
     includes = ["."],
     deps = [
         "@curl",
+        "@tl-expected//:tl-expected"
     ],
 )

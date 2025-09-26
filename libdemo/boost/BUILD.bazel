@@ -1,0 +1,9 @@
+load("@rules_cc//cc:cc_binary.bzl", "cc_binary")
+
+cc_binary(
+    name = "boost_geometry_demo",
+    srcs = ["boost_geometry_demo.cpp"],
+    deps = [
+        "@boost.geometry//:boost.geometry"
+    ]
+)
