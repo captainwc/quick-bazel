@@ -24,7 +24,8 @@ bazel_dep(name = "tl-expected", version = "1.1.0")
 
 # net
 bazel_dep(name = "curl", version = "8.8.0.bcr.3")
-bazel_dep(name = "asio", version = "1.34.2")
+# bazel_dep(name = "asio", version = "1.34.2")
+bazel_dep(name = "asio", version = "1.28.2")
 bazel_dep(name = "paho.mqtt.cpp", version = "1.5.2")
 
 # all in one
@@ -33,3 +34,6 @@ bazel_dep(name = "abseil-cpp", version = "20250512.1")
 # work
 bazel_dep(name = "boost.geometry", version = "1.87.0")
 bazel_dep(name = "protobuf", version = "32.1")
+
+# DDS
+bazel_dep(name = "fastdds", version = "3.1.1.bcr.1")

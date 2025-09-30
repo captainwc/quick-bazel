@@ -1,0 +1,11 @@
+filegroup (
+    name = "fastddsgen_bin",
+    srcs = ["fastddsgen"],
+    visibility = ["//visibility:public"]
+)
+
+filegroup (
+    name = "fastddsgen_jar",
+    srcs = ["fastddsgen.jar"],
+    visibility = ["//visibility:public"]
+)

@@ -1,0 +1,25 @@
+load("@rules_cc//cc:cc_binary.bzl", "cc_binary")
+load(":fastddsgen.bzl", "idl_library")
+
+package(default_visibility = ["//visibility:public"])
+
+idl_library(
+    name = "hello_world_idl",
+    src = "HelloWorld.idl",
+)
+
+cc_binary(
+    name = "fastdds_publisher",
+    srcs = ["fastdds_publisher.cpp"],
+    deps = [
+        ":hello_world_idl",
+    ],
+)
+
+cc_binary(
+    name = "fastdds_subscriber",
+    srcs = ["fastdds_subscriber.cpp"],
+    deps = [
+        ":hello_world_idl",
+    ],
+)
