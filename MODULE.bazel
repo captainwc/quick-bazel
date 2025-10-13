@@ -11,6 +11,7 @@ git_override(
 bazel_dep(name = "rules_cc", version = "0.1.4")
 bazel_dep(name = "rules_proto", version = "7.1.0")
 bazel_dep(name = "rules_python", version = "1.6.1")
+bazel_dep(name = "rules_pkg", version = "1.1.0")
 
 # frame
 bazel_dep(name = "googletest", version = "1.17.0")

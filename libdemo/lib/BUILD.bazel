@@ -1,0 +1,36 @@
+load("@rules_cc//cc:cc_binary.bzl", "cc_binary")
+load("@rules_cc//cc:cc_import.bzl", "cc_import")
+load("@rules_pkg//:pkg.bzl", "pkg_tar")
+
+cc_binary(
+    name = "liblogger.so",
+    srcs = ["logger.h","logger.cpp"],
+    deps = [
+        "@fmt",
+    ],
+    linkshared = True,
+)
+
+cc_import(
+    name = "logger",
+    hdrs = [":logger.h"],
+    shared_library = "liblogger.so",
+    visibility = ["//visibility:public"]
+)
+
+# a demo using shared_library
+
+cc_binary(
+    name = "logger_test",
+    srcs = ["logger_test.cpp"],
+    deps = ["//libdemo/lib:logger"],
+    # 默认去相对路径下找动态库，方便打包
+    linkopts = ["-Wl,-rpath,$ORIGIN"],
+)
+
+pkg_tar(
+    name = "release_logger_test",
+    srcs = [":logger_test", "//libdemo/lib:liblogger.so"],
+    package_dir = "logger_test_release",
+    mode = "0755"
+)
