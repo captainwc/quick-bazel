@@ -12,6 +12,7 @@ bazel_dep(name = "rules_cc", version = "0.1.4")
 bazel_dep(name = "rules_proto", version = "7.1.0")
 bazel_dep(name = "rules_python", version = "1.6.1")
 bazel_dep(name = "rules_pkg", version = "1.1.0")
+bazel_dep(name = "rules_foreign_cc", version = "0.15.1")
 
 # frame
 bazel_dep(name = "googletest", version = "1.17.0")
@@ -38,3 +39,22 @@ bazel_dep(name = "protobuf", version = "32.1")
 
 # DDS
 bazel_dep(name = "fastdds", version = "3.1.1.bcr.1")
+
+# http archive
+# quick-cmake: skutils
+http_archive = use_repo_rule("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
+http_archive(
+    name = "skutils",
+    url = "https://github.com/captainwc/quick-cmake/archive/refs/tags/v2.0.zip",
+    strip_prefix = "quick-cmake-2.0",
+    sha256 = "3780ad05841dfc1e579e0dd9663a7576e386d0316a189ff2484f30b9357bfca3",
+    build_file_content = """
+load("@rules_cc//cc:defs.bzl", "cc_library")
+cc_library(
+    name = "skutils",
+    hdrs = glob(["include/**/*.h"]),
+    includes = ["include"],
+    visibility = ["//visibility:public"],
+)
+    """
+)
