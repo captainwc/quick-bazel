@@ -2,3 +2,33 @@ load("@rules_cc//cc:cc_binary.bzl", "cc_binary")
 load("@rules_proto//proto:defs.bzl", "proto_library")
 load("@rules_python//python:defs.bzl", "py_binary")
 load("@protobuf//bazel:py_proto_library.bzl","py_proto_library")
+
+proto_library(
+    name = "common_proto",
+    srcs = ["common.proto"]
+)
+
+proto_library(
+    name = "address_book_proto",
+    srcs = ["address_book.proto"],
+    deps = [":common_proto"]
+)
+
+cc_proto_library(
+    name = "common_proto_cc",
+    deps = [":common_proto"]
+)
+
+cc_proto_library(
+    name = "address_book_proto_cc",
+    deps = [":address_book_proto"]
+)
+
+cc_binary(
+    name = "protobuf_demo",
+    srcs = ["protobuf_demo.cpp"],
+    deps = [
+        ":address_book_proto_cc",
+        "@skutils"
+    ]
+)

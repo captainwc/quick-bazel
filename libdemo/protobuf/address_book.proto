@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+package tutorial.addressbook;
+
+import "libdemo/protobuf/common.proto";
+
+message Person {
+    Header header = 1;
+    string name = 2;
+    int32 id = 3;
+    optional string email = 4;
+
+    enum PhoneType {
+        MOBILE = 0;
+        HOME = 1;
+        WORK = 2;
+    }
+
+    message PhoneNumber {
+        string number = 1;
+        optional PhoneType type = 2;
+    }
+
+    repeated PhoneNumber phone = 5;
+}
+
+message AddressBook {
+    tutorial.Header header = 1;
+    repeated Person person = 2;
+}
